@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from rest_framework import viewsets
-from .serializers import QuestionSerializer
+from . import serializers
 
 from .models import Choice, Question
 
@@ -60,4 +60,8 @@ def vote(request, question_id):
 
 class QuestionViewSet(viewsets.ModelViewSet):
     queryset = Question.objects.all()
-    serializer_class = QuestionSerializer
+    serializer_class = serializers.QuestionSerializer
+
+class ChoiceViewSet(viewsets.ModelViewSet):
+    queryset = Choice.objects.all()
+    serializer_class = serializers.ChoiceSerializer
